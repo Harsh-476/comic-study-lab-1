@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Bg from "./components/bg.jsx";
 import "./postsPage.css";
+import { API_URL, apiFetch, withBase } from "./lib/api";
 
 const buildFileUrl = (baseUrl, relativeUrl) => {
   try {
@@ -25,8 +26,7 @@ const formatFileSize = (bytes) => {
 };
 
 function PostsPage() {
-  // Use Vite environment variable for API base URL. Ensure VITE_API_URL is set in your .env.
-  const API_URL = import.meta.env.VITE_API_URL;
+  // API_URL is provided by src/lib/api and falls back to localhost with a warning when missing.
   const navigate = useNavigate();
   const [uploads, setUploads] = useState([]);
   const [status, setStatus] = useState(null);
@@ -57,7 +57,7 @@ function PostsPage() {
       setStatus({ type: "error", message: "This post does not include a file to view." });
       return;
     }
-    const fileUrl = buildFileUrl(API_URL, upload.fileUrl);
+    const fileUrl = buildFileUrl(API_URL || withBase(""), upload.fileUrl);
     window.open(fileUrl, "_blank", "noopener,noreferrer");
   };
 
@@ -67,7 +67,7 @@ function PostsPage() {
       return;
     }
 
-    const fileUrl = buildFileUrl(API_URL, upload.fileUrl);
+  const fileUrl = buildFileUrl(API_URL || withBase(""), upload.fileUrl);
 
     try {
       const response = await fetch(fileUrl);
@@ -105,7 +105,7 @@ function PostsPage() {
 
     const fetchUploads = async () => {
       try {
-        const response = await fetch(`${API_URL}/api/uploads`, {
+        const response = await apiFetch(`/api/uploads`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 

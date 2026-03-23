@@ -3,10 +3,9 @@ import { useNavigate } from "react-router-dom";
 import "./page7.css";
 import Bg from "./components/bg.jsx";
 import envelopeImage from "./assets/envelope.png";
+import { API_URL, apiFetch } from "./lib/api";
 
 function Page7() {
-  // Use Vite environment variable for API base URL. Ensure VITE_API_URL is set in your .env.
-  const API_URL = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
 
   const [showReviewModal, setShowReviewModal] = useState(false);
@@ -75,7 +74,7 @@ function Page7() {
     }
 
     try {
-      const response = await fetch(`${API_URL}/api/auth/signin`, {
+      const response = await apiFetch(`/api/auth/signin`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(signInData),
@@ -123,7 +122,7 @@ function Page7() {
     }
 
     try {
-      const response = await fetch(`${API_URL}/api/auth/signup`, {
+      const response = await apiFetch(`/api/auth/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(signUpData),

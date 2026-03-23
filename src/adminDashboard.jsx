@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Bg from "./components/bg.jsx";
 import "./adminDashboard.css";
+import { API_URL, apiFetch, withBase } from "./lib/api";
 
 const MAX_WORDS = 1000;
 
@@ -33,8 +34,6 @@ const formatFileSize = (bytes) => {
 };
 
 function AdminDashboard() {
-  // Use Vite environment variable for API base URL. Ensure VITE_API_URL is set in your .env.
-  const API_URL = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
   const [description, setDescription] = useState("");
   const [file, setFile] = useState(null);
@@ -73,7 +72,7 @@ function AdminDashboard() {
 
     const fetchUploads = async () => {
       try {
-        const response = await fetch(`${API_URL}/api/uploads`, {
+        const response = await apiFetch(`/api/uploads`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -195,7 +194,7 @@ function AdminDashboard() {
 
     try {
       setStatus(null);
-      const response = await fetch(`${API_URL}/api/uploads`, {
+      const response = await apiFetch(`/api/uploads`, {
         method: "POST",
         headers: { Authorization: `Bearer ${token}` },
         body: formData,
@@ -246,7 +245,7 @@ function AdminDashboard() {
       setStatus({ type: "error", message: "This post does not include a file to view." });
       return;
     }
-    const fileUrl = buildFileUrl(API_URL, upload.fileUrl);
+    const fileUrl = buildFileUrl(API_URL || withBase(""), upload.fileUrl);
     window.open(fileUrl, "_blank", "noopener,noreferrer");
   };
 
@@ -256,7 +255,7 @@ function AdminDashboard() {
       return;
     }
 
-    const fileUrl = buildFileUrl(API_URL, upload.fileUrl);
+  const fileUrl = buildFileUrl(API_URL || withBase(""), upload.fileUrl);
 
     try {
       const response = await fetch(fileUrl);
@@ -285,7 +284,7 @@ function AdminDashboard() {
     }
 
     try {
-      const response = await fetch(`${API_URL}/api/uploads/${uploadId}`, {
+      const response = await apiFetch(`/api/uploads/${uploadId}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
