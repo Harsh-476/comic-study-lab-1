@@ -1,0 +1,357 @@
+/* ============================================================
+   projectsPage.css  —  Canva page 9 (Admin) / page 10 (User)
+   Cream bg + Bg-component decorations + handwriting font
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Comic+Neue:wght@400;700&display=swap');
+
+/* ── Container ── */
+.page9-container {
+  position: relative;
+  min-height: 100vh;
+  color: #3b4a37;
+  font-family: "Comic Neue", cursive;
+  overflow-x: hidden;
+}
+
+/* ── Top bar ── */
+.page9-topbar {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  z-index: 10;
+}
+
+.page9-logout {
+  background: none;
+  border: none;
+  font-family: "Caveat", "Comic Neue", cursive;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #3b4a37;
+  letter-spacing: 2px;
+  cursor: pointer;
+  text-transform: uppercase;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+
+.page9-logout:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* ── Page title ── */
+.page9-title {
+  font-family: "Caveat", "Comic Neue", cursive;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #3b4a37;
+  text-align: center;
+  margin: 0;
+  padding-top: 2.5rem;
+  padding-bottom: 0.5rem;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Main body ── */
+.page9-body {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 2.5rem;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 2rem 2rem 5rem;
+}
+
+/* ── LEFT — New Post (admin) ── */
+.page9-left {
+  flex: 0 0 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ── RIGHT — Recent Posts ── */
+.page9-right {
+  flex: 1;
+}
+
+/* When user is viewing, right panel takes full width */
+.page9-right-full {
+  flex: 1 1 100%;
+  max-width: 100%;
+}
+
+/* Section headings */
+.page9-section-title {
+  font-family: "Caveat", "Comic Neue", cursive;
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #3b4a37;
+  margin: 0 0 0.75rem;
+}
+
+.page9-recent-title {
+  text-align: right;
+}
+
+/* ── Form elements ── */
+.page9-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.page9-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #3b4a37;
+}
+
+/* Inline labels (Link, File) sit label + input on same row */
+.page9-label-inline {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.page9-label-inline .page9-input,
+.page9-label-inline .page9-file {
+  flex: 1;
+}
+
+.page9-textarea {
+  border: 2px solid #3b4a37;
+  border-radius: 4px;
+  padding: 0.75rem;
+  font-family: "Comic Neue", cursive;
+  font-size: 1rem;
+  resize: vertical;
+  background: #fff;
+  color: #3b4a37;
+  min-height: 180px;
+}
+
+.page9-textarea:focus {
+  outline: 2px solid rgba(59, 74, 55, 0.4);
+}
+
+.page9-wordcount {
+  font-size: 0.85rem;
+  color: rgba(59, 74, 55, 0.6);
+  text-align: right;
+  font-weight: 400;
+}
+
+.page9-input {
+  border: 2px solid #3b4a37;
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  font-family: "Comic Neue", cursive;
+  font-size: 1rem;
+  background: #fff;
+  color: #3b4a37;
+  height: 2.2rem;
+}
+
+.page9-input:focus {
+  outline: 2px solid rgba(59, 74, 55, 0.4);
+}
+
+/* File input styled to show Browse button matching Canva */
+.page9-file {
+  font-family: "Comic Neue", cursive;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+/* UPLOAD button */
+.page9-upload-btn {
+  align-self: flex-start;
+  margin-top: 0.5rem;
+  padding: 0.45rem 2rem;
+  border: 2px solid #3b4a37;
+  border-radius: 4px;
+  background: transparent;
+  color: #3b4a37;
+  font-family: "Caveat", "Comic Neue", cursive;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.page9-upload-btn:hover {
+  background: #3b4a37;
+  color: #f5f2eb;
+}
+
+/* Status messages */
+.page9-status {
+  font-size: 0.95rem;
+  margin: 0.25rem 0;
+}
+
+.page9-status-error   { color: #7d2b2b; }
+.page9-status-success { color: #2b5f2b; }
+
+/* ── Post cards grid ── */
+.page9-placeholder {
+  font-size: 1.05rem;
+  color: rgba(59, 74, 55, 0.6);
+}
+
+.page9-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+
+.page9-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.88);
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 6px 18px rgba(59, 74, 55, 0.08);
+}
+
+.page9-card-preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(245, 242, 235, 0.7);
+  border-radius: 8px;
+  min-height: 140px;
+  overflow: hidden;
+}
+
+.page9-preview-placeholder {
+  font-size: 0.9rem;
+  color: rgba(59, 74, 55, 0.6);
+  padding: 1rem;
+  text-align: center;
+}
+
+.page9-preview-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.page9-preview-video  { width: 100%; max-height: 180px; border: none; }
+.page9-preview-audio  { width: 100%; }
+.page9-preview-pdf    { width: 100%; min-height: 180px; border: none; }
+
+.page9-preview-link {
+  color: #3b4a37;
+  text-decoration: underline;
+}
+
+.page9-card-meta h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  word-break: break-word;
+}
+
+.page9-card-desc {
+  margin: 0.4rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  max-height: 200px;
+  overflow: auto;
+  color: rgba(59, 74, 55, 0.85);
+}
+
+.page9-card-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: #2f5aa8;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.page9-card-link:hover { text-decoration: underline; }
+
+.page9-card-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.page9-card-btn {
+  flex: 1 1 100px;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid rgba(59, 74, 55, 0.35);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  color: #3b4a37;
+  font-family: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.page9-card-btn:hover {
+  background: rgba(59, 74, 55, 0.1);
+  transform: translateY(-1px);
+}
+
+.page9-card-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  color: rgba(59, 74, 55, 0.6);
+  margin-top: 0.5rem;
+}
+
+.page9-delete-btn {
+  margin-top: 0.5rem;
+  width: 100%;
+  padding: 0.4rem;
+  border: 1px solid #7d2b2b;
+  border-radius: 8px;
+  background: rgba(125, 43, 43, 0.08);
+  color: #7d2b2b;
+  font-family: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.page9-delete-btn:hover { background: rgba(125, 43, 43, 0.18); }
+
+/* ── Responsive ── */
+@media (max-width: 800px) {
+  .page9-body {
+    flex-direction: column;
+    padding: 1.5rem 1.25rem 4rem;
+  }
+
+  .page9-left {
+    flex: none;
+    width: 100%;
+  }
+
+  .page9-title { font-size: 2.2rem; }
+
+  .page9-recent-title { text-align: left; }
+
+  .page9-label-inline {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
