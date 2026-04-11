@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./page7.css";
 import Bg from "./components/bg.jsx";
 import envelopeImage from "./assets/envelope.png";
-import { apiFetch } from "./lib/api";
+import { BASE_URL } from "./lib/api";
 
 function Page7() {
   const navigate = useNavigate();
@@ -74,7 +74,7 @@ function Page7() {
     }
 
     try {
-      const response = await apiFetch(`/api/auth/signin`, {
+      const response = await fetch(`${BASE_URL}/api/auth/signin`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(signInData),
@@ -122,7 +122,7 @@ function Page7() {
     }
 
     try {
-      const response = await apiFetch(`/api/auth/signup`, {
+      const response = await fetch(`${BASE_URL}/api/auth/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(signUpData),
