@@ -14,26 +14,24 @@ const PORT = process.env.PORT || 5000;
 const MONGODB_URI = process.env.MONGODB_URI || "";
 const JWT_SECRET = process.env.JWT_SECRET || "";
 
-// ✅ CORS CONFIG
-const FRONTEND_URLS = (process.env.FRONTEND_URL || "http://localhost:5173")
-  .split(",")
-  .map((s) => s.trim())
-  .filter(Boolean);
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://comic-study-lab.vercel.app",
+];
 
 const corsOptions = {
-  origin: function (origin, callback) {
+  origin(origin, callback) {
     if (!origin) return callback(null, true);
-    if (FRONTEND_URLS.includes(origin)) {
+    if (allowedOrigins.includes(origin)) {
       return callback(null, true);
     }
     return callback(new Error("CORS policy: This origin is not allowed."));
   },
+  methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 };
 
-// ✅ Apply CORS ONCE
 app.use(cors(corsOptions));
-app.options("*", cors(corsOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
