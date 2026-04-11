@@ -2,11 +2,12 @@ import express from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
-import User from "../models/User.js";
+import User from "../models/user.js";
 
 dotenv.config();
 
 const router = express.Router();
+console.log("AUTH LOADED");
 
 const getJwtSecret = () => process.env.JWT_SECRET;
 
@@ -89,7 +90,7 @@ router.post("/signin", async (req, res) => {
       return res.status(500).json({ message: "Server missing JWT secret" });
     }
 
-  const role = user.role || "user";
+    const role = user.role || "user";
     const token = jwt.sign({ userId: user._id, role }, jwtSecret, { expiresIn: "7d" });
 
     res.json({

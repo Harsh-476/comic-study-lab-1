@@ -5,7 +5,7 @@ import fs from "fs";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import Upload from "../models/Upload.js";
-import User from "../models/User.js";
+import User from "../models/user.js";
 
 dotenv.config();
 
