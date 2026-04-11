@@ -7,7 +7,6 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Bg from "./components/bg.jsx";
 import "./page9.css";
-import { BASE_URL, apiFetch } from "./lib/api";
 
 /* ── helpers ─────────────────────────────────────────────────── */
 const MAX_WORDS = 1000;
@@ -65,7 +64,7 @@ function Page9() {
 
     const fetchUploads = async () => {
       try {
-        const res = await apiFetch("/api/uploads", {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/uploads`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -122,7 +121,7 @@ function Page9() {
 
     try {
       setStatus(null);
-      const res = await apiFetch("/api/uploads", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/uploads`, {
         method:  "POST",
         headers: { Authorization: `Bearer ${token}` },
         body:    formData,
@@ -156,7 +155,7 @@ function Page9() {
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this post?")) return;
     try {
-      const res = await apiFetch(`/api/uploads/${id}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/uploads/${id}`, {
         method:  "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -173,13 +172,13 @@ function Page9() {
 
   const handleOpen = (upload) => {
     if (!upload.fileUrl) return;
-    window.open(buildFileUrl(BASE_URL, upload.fileUrl), "_blank", "noopener,noreferrer");
+    window.open(buildFileUrl(import.meta.env.VITE_API_URL, upload.fileUrl), "_blank", "noopener,noreferrer");
   };
 
   const handleDownload = async (upload) => {
     if (!upload.fileUrl) return;
     try {
-      const res  = await fetch(buildFileUrl(BASE_URL, upload.fileUrl));
+      const res  = await fetch(buildFileUrl(import.meta.env.VITE_API_URL, upload.fileUrl));
       if (!res.ok) throw new Error("Download failed.");
       const blob    = await res.blob();
       const blobUrl = window.URL.createObjectURL(blob);
@@ -206,7 +205,7 @@ function Page9() {
     if (!upload.fileUrl || !upload.fileType)
       return <div className="page9-preview-placeholder">No file</div>;
 
-    const url = buildFileUrl(BASE_URL, upload.fileUrl);
+    const url = buildFileUrl(import.meta.env.VITE_API_URL, upload.fileUrl);
     if (upload.fileType.startsWith("image/"))
       return <img src={url} alt={upload.originalName} className="page9-preview-image" />;
     if (upload.fileType.startsWith("video/"))

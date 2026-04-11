@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Bg from "./components/bg.jsx";
 import "./adminDashboard.css";
-import { BASE_URL, apiFetch } from "./lib/api";
 
 const MAX_WORDS = 1000;
 
@@ -82,7 +81,7 @@ function AdminDashboard() {
 
     const fetchUploads = async () => {
       try {
-        const response = await apiFetch(`/api/uploads`, {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/uploads`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -204,7 +203,7 @@ function AdminDashboard() {
 
     try {
       setStatus(null);
-      const response = await apiFetch(`/api/uploads`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/uploads`, {
         method: "POST",
         headers: { Authorization: `Bearer ${token}` },
         body: formData,
@@ -255,7 +254,7 @@ function AdminDashboard() {
       setStatus({ type: "error", message: "This post does not include a file to view." });
       return;
     }
-    const fileUrl = buildFileUrl(BASE_URL, upload.fileUrl);
+    const fileUrl = buildFileUrl(import.meta.env.VITE_API_URL, upload.fileUrl);
     window.open(fileUrl, "_blank", "noopener,noreferrer");
   };
 
@@ -265,7 +264,7 @@ function AdminDashboard() {
       return;
     }
 
-    const fileUrl = buildFileUrl(BASE_URL, upload.fileUrl);
+    const fileUrl = buildFileUrl(import.meta.env.VITE_API_URL, upload.fileUrl);
 
     try {
       const response = await fetch(fileUrl);
@@ -294,7 +293,7 @@ function AdminDashboard() {
     }
 
     try {
-      const response = await apiFetch(`/api/uploads/${uploadId}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/uploads/${uploadId}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -329,7 +328,7 @@ function AdminDashboard() {
       return <div className="upload-preview-placeholder">No file uploaded</div>;
     }
 
-    const fileUrl = buildFileUrl(BASE_URL, upload.fileUrl);
+    const fileUrl = buildFileUrl(import.meta.env.VITE_API_URL, upload.fileUrl);
     if (upload.fileType.startsWith("image/")) {
       return <img src={fileUrl} alt={upload.originalName} className="upload-preview-image" />;
     }
