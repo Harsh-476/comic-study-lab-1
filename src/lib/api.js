@@ -1,9 +1,10 @@
-// Centralized API helpers — ensure VITE_API_URL is defined and build safe URLs.
-const raw = import.meta.env.VITE_API_URL;
+// Centralized API helpers - ensure VITE_API_URL is defined and build safe URLs.
+export const BASE_URL = import.meta.env.VITE_API_URL;
 
-export const API_URL = raw && String(raw).trim() ? String(raw).replace(/\/+$/, "") : null;
+const normalizedBaseUrl =
+  BASE_URL && String(BASE_URL).trim() ? String(BASE_URL).replace(/\/+$/, "") : null;
 
-if (!API_URL) {
+if (!normalizedBaseUrl) {
   // eslint-disable-next-line no-console
   console.warn(
     "VITE_API_URL is not set. API requests will be made relative to the current origin.\nSet VITE_API_URL in your .env to point to your backend (e.g. https://api.example.com)"
@@ -11,14 +12,14 @@ if (!API_URL) {
 }
 
 export function withBase(path) {
-  // If API_URL is provided use absolute URL, otherwise return a relative path so
-  // requests go to the same origin as the frontend (no explicit localhost fallback).
-  if (!API_URL) {
+  // If BASE_URL is provided use absolute URL, otherwise return a relative path so
+  // requests go to the same origin as the frontend.
+  if (!normalizedBaseUrl) {
     if (!path) return "";
     return path.startsWith("/") ? path : "/" + path;
   }
-  if (!path) return API_URL;
-  return `${API_URL.replace(/\/+$/, "")}${path.startsWith("/") ? path : "/" + path}`;
+  if (!path) return normalizedBaseUrl;
+  return `${normalizedBaseUrl}${path.startsWith("/") ? path : "/" + path}`;
 }
 
 export async function apiFetch(path, options) {
@@ -26,4 +27,4 @@ export async function apiFetch(path, options) {
   return fetch(url, options);
 }
 
-export default { API_URL, withBase, apiFetch };
+export default { BASE_URL, withBase, apiFetch };

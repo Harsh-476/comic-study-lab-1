@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./page7.css";
 import Bg from "./components/bg.jsx";
 import envelopeImage from "./assets/envelope.png";
-import { API_URL, apiFetch } from "./lib/api";
+import { apiFetch } from "./lib/api";
 
 function Page7() {
   const navigate = useNavigate();

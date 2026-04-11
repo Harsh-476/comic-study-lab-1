@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Bg from "./components/bg.jsx";
 import "./adminDashboard.css";
-import { API_URL, apiFetch, withBase } from "./lib/api";
+import { BASE_URL, apiFetch } from "./lib/api";
 
 const MAX_WORDS = 1000;
 
@@ -123,7 +123,7 @@ function AdminDashboard() {
     return () => {
       isCancelled = true;
     };
-  }, [API_URL, navigate, token, user]);
+  }, [navigate, token, user]);
 
   const handleDescriptionChange = (event) => {
     setDescription(event.target.value);
@@ -229,10 +229,10 @@ function AdminDashboard() {
         throw new Error(data.message || "Upload failed. Please try again.");
       }
 
-    setUploads((prev) => [data, ...prev]);
-    setDescription("");
-    setFile(null);
-    setLink("");
+      setUploads((prev) => [data, ...prev]);
+      setDescription("");
+      setFile(null);
+      setLink("");
       if (fileInputRef.current) {
         fileInputRef.current.value = "";
       }
@@ -255,7 +255,7 @@ function AdminDashboard() {
       setStatus({ type: "error", message: "This post does not include a file to view." });
       return;
     }
-  const fileUrl = buildFileUrl(API_URL, upload.fileUrl);
+    const fileUrl = buildFileUrl(BASE_URL, upload.fileUrl);
     window.open(fileUrl, "_blank", "noopener,noreferrer");
   };
 
@@ -265,7 +265,7 @@ function AdminDashboard() {
       return;
     }
 
-  const fileUrl = buildFileUrl(API_URL, upload.fileUrl);
+    const fileUrl = buildFileUrl(BASE_URL, upload.fileUrl);
 
     try {
       const response = await fetch(fileUrl);
@@ -329,7 +329,7 @@ function AdminDashboard() {
       return <div className="upload-preview-placeholder">No file uploaded</div>;
     }
 
-    const fileUrl = buildFileUrl(API_URL, upload.fileUrl);
+    const fileUrl = buildFileUrl(BASE_URL, upload.fileUrl);
     if (upload.fileType.startsWith("image/")) {
       return <img src={fileUrl} alt={upload.originalName} className="upload-preview-image" />;
     }
