@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import "./styles.css";
+import "./page11.css";
 
 export default function CreativesComics() {
 
@@ -39,7 +39,7 @@ export default function CreativesComics() {
   }, []);
 
   return (
-    <div>
+    <div className="page11-shell">
 
       {/* Google Fonts */}
       <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Kalam:wght@300;400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet"/>

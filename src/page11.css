@@ -1,11 +1,14 @@
-*, *::before, *::after {
+.page11-shell,
+.page11-shell *,
+.page11-shell *::before,
+.page11-shell *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 /* Variables */
-:root {
+.page11-shell {
   --white:      #ffffff;
   --bg:         #f9f9f5;
   --green:      #3d6b45;
@@ -16,7 +19,7 @@
 }
 
 /* Body */
-body {
+.page11-shell {
   font-family: 'Lato', sans-serif;
   background: var(--bg);
   color: var(--text);
@@ -65,7 +68,7 @@ body {
 }
 
 /* Header */
-header {
+.page11-shell header {
   position: relative;
   display: flex;
   justify-content: center;
@@ -105,7 +108,7 @@ header {
 }
 
 /* Main layout */
-main {
+.page11-shell main {
   display: grid;
   grid-template-columns: 1fr 260px;
   gap: 0 52px;
@@ -195,7 +198,7 @@ main {
   margin-bottom: 14px;
 }
 
-#file-input {
+.page11-shell #file-input {
   display: none;
 }
 
@@ -251,7 +254,7 @@ main {
 
 /* Responsive */
 @media (max-width: 660px) {
-  main {
+  .page11-shell main {
     grid-template-columns: 1fr;
     gap: 32px;
   }

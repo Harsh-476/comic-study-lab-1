@@ -18,8 +18,20 @@ import s3 from "./assets/s3.png";
 import s4 from "./assets/s4.png";
 import "./page8.css";
 
-function page8() {
+function Page8() {
   const location = useLocation();
+  const storedUser = localStorage.getItem("cs_lab_user");
+  let isAdmin = false;
+
+  if (storedUser) {
+    try {
+      isAdmin = JSON.parse(storedUser)?.role === "admin";
+    } catch {
+      localStorage.removeItem("cs_lab_user");
+    }
+  }
+
+  const comicsPath = isAdmin ? "/page11" : "/page8/comics";
 
   return (
     <div className="page8-container">
@@ -66,8 +78,8 @@ function page8() {
 
       {/* MIDDLE-LEFT: Creatives: Comics */}
       <Link
-        to="/page8/comics"
-        className={`page8-link link-comics${location.pathname === "/page8/comics" ? " active" : ""}`}
+        to={comicsPath}
+        className={`page8-link link-comics${location.pathname === comicsPath ? " active" : ""}`}
       >
         Creatives: Comics
       </Link>
@@ -90,4 +102,4 @@ function page8() {
   );
 }
 
-export default page8;
+export default Page8;
