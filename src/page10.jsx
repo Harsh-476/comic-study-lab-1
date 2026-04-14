@@ -1,15 +1,24 @@
 import React from "react";
-import "./Projects.css";
+import { useNavigate } from "react-router-dom";
+import "./page10.css";
 
-import doodle from "./doodle.png";
-import leaf from "./leaf.png";
-import star from "./star.png";
+import doodle from "./assets/curl.png";
+import leaf from "./assets/leaf.png";
+import star from "./assets/star.png";
 
 const Projects = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("cs_lab_token");
+    localStorage.removeItem("cs_lab_user");
+    navigate("/page7", { replace: true });
+  };
+
   return (
     <div className="projects-container">
-      <div className="title">Creatives: PRojects</div>
-      <div className="logout">LOG OUT</div>
+      <div className="title">Creatives: Projects</div>
+      <button className="logout" onClick={handleLogout}>LOG OUT</button>
 
       {/* DOODLES */}
       <img src={doodle} className="img curl-top-left" alt="doodle" />

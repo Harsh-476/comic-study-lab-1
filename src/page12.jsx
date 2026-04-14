@@ -1,13 +1,22 @@
 import React from "react";
-import "./Creatives.css";
+import { useNavigate } from "react-router-dom";
+import "./page12.css";
 
-import curl from "./curl.png";
-import leaf from "./leaf.png";
-import star from "./star.png";
+import curl from "./assets/curl.png";
+import leaf from "./assets/leaf.png";
+import star from "./assets/star.png";
 
 const Creatives = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("cs_lab_token");
+    localStorage.removeItem("cs_lab_user");
+    navigate("/page7", { replace: true });
+  };
+
   return (
-    <div>
+    <div className="page12-container">
       {/* Google Font */}
       <link
         href="https://fonts.googleapis.com/css2?family=Give+You+Glory&display=swap"
@@ -15,7 +24,7 @@ const Creatives = () => {
       />
 
       <div className="title">Creatives: Comics</div>
-      <div className="logout">LOG OUT</div>
+      <button className="logout" onClick={handleLogout}>LOG OUT</button>
 
       {/* DOODLES */}
       <img src={curl} className="img curl-top-left" alt="" />

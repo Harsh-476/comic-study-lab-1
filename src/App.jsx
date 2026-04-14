@@ -9,7 +9,9 @@ import Page6 from "./page6.jsx";
 import Page7 from "./page7.jsx";
 import Page8 from "./page8.jsx";
 import Page9 from "./page9.jsx";
+import Page10 from "./page10.jsx";
 import Page11 from "./page11.jsx";
+import Page12 from "./page12.jsx";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 function App() {
@@ -33,9 +35,11 @@ function App() {
       {/* One route, component reads role from localStorage internally */}
       <Route path="/page9"          element={<Page9 />} />
       <Route path="/page8/projects" element={<Page9 />} />
+      <Route path="/page10"         element={<Page10 />} />
 
       {/* ── Page 11: Creatives — Comics (admin) ── */}
       <Route path="/page11" element={<Page11 />} />
+      <Route path="/page12" element={<Page12 />} />
 
       {/* ── Legacy redirects so old bookmarks don't 404 ── */}
       <Route path="/dashboard" element={<Navigate to="/page8" replace />} />

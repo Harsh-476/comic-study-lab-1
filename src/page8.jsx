@@ -31,7 +31,8 @@ function Page8() {
     }
   }
 
-  const comicsPath = isAdmin ? "/page11" : "/page8/comics";
+  const projectsPath = isAdmin ? "/page9" : "/page10";
+  const comicsPath = isAdmin ? "/page11" : "/page12";
 
   return (
     <div className="page8-container">
@@ -68,10 +69,10 @@ function Page8() {
 
       {/* ── Zigzag navigation links ── */}
 
-      {/* TOP-RIGHT: Creatives: Projects → goes to page9 */}
+      {/* TOP-RIGHT: Creatives: Projects */}
       <Link
-        to="/page9"
-        className={`page8-link link-projects${location.pathname === "/page9" ? " active" : ""}`}
+        to={projectsPath}
+        className={`page8-link link-projects${location.pathname === projectsPath ? " active" : ""}`}
       >
         Creatives: Projects
       </Link>

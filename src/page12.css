@@ -1,11 +1,19 @@
-body {
+.page12-container {
   margin: 0;
   background: #ffffff;
   overflow: hidden;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.page12-container,
+.page12-container * {
+  box-sizing: border-box;
 }
 
 /* TITLE */
-.title {
+.page12-container .title {
   position: absolute;
   top: 30px;
   width: 100%;
@@ -16,7 +24,7 @@ body {
 }
 
 /* LOGOUT */
-.logout {
+.page12-container .logout {
   position: absolute;
   top: 40px;
   right: 120px;
@@ -24,42 +32,45 @@ body {
   font-size: 18px;
   color: #4f634f;
   letter-spacing: 2px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
 }
 
 /* COMMON */
-.img {
+.page12-container .img {
   position: absolute;
 }
 
 /* DOODLES */
-.curl-top-left {
+.page12-container .curl-top-left {
   top: 20px;
   left: 60px;
   width: 80px;
 }
 
-.curl-right {
+.page12-container .curl-right {
   top: 300px;
   right: 120px;
   width: 90px;
 }
 
 /* LEAVES */
-.leaf-left {
+.page12-container .leaf-left {
   top: 220px;
   left: 250px;
   width: 65px;
   transform: rotate(-80deg);
 }
 
-.leaf-right-top {
+.page12-container .leaf-right-top {
   top: 170px;
   right: 180px;
   width: 65px;
   transform: rotate(80deg);
 }
 
-.leaf-right-mid {
+.page12-container .leaf-right-mid {
   top: 300px;
   right: 300px;
   width: 60px;
@@ -67,25 +78,25 @@ body {
 }
 
 /* STARS */
-.star-left {
+.page12-container .star-left {
   top: 320px;
   left: 80px;
   width: 50px;
 }
 
-.star-bottom {
+.page12-container .star-bottom {
   bottom: 120px;
   left: 550px;
   width: 50px;
 }
 
-.star-top1 {
+.page12-container .star-top1 {
   top: 80px;
   right: 60px;
   width: 45px;
 }
 
-.star-top2 {
+.page12-container .star-top2 {
   top: 120px;
   right: 40px;
   width: 45px;
