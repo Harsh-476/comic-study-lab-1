@@ -12,6 +12,8 @@ import Page9 from "./page9.jsx";
 import Page10 from "./page10.jsx";
 import Page11 from "./page11.jsx";
 import Page12 from "./page12.jsx";
+import Page13 from "./page13.jsx";
+import Page14 from "./page14.jsx";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 function App() {
@@ -40,6 +42,10 @@ function App() {
       {/* ── Page 11: Creatives — Comics (admin) ── */}
       <Route path="/page11" element={<Page11 />} />
       <Route path="/page12" element={<Page12 />} />
+
+      {/* ── Page 13 (admin) / Page 14 (user): Creatives — Videos ── */}
+      <Route path="/page13" element={<Page13 />} />
+      <Route path="/page14" element={<Page14 />} />
 
       {/* ── Legacy redirects so old bookmarks don't 404 ── */}
       <Route path="/dashboard" element={<Navigate to="/page8" replace />} />

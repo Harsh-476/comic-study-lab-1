@@ -1,7 +1,15 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./page13.css";
 
 export default function CreativesVideos() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("cs_lab_token");
+    localStorage.removeItem("cs_lab_user");
+    navigate("/page7", { replace: true });
+  };
 
   useEffect(() => {
     const fileInput = document.getElementById('file-input');
@@ -81,7 +89,7 @@ export default function CreativesVideos() {
 
         <header>
           <h1 className="site-title">Creatives: Videos</h1>
-          <a href="#" className="logout-btn">LOG OUT</a>
+          <button className="logout-btn" onClick={handleLogout}>LOG OUT</button>
         </header>
 
         <main>

@@ -29,37 +29,37 @@
 }
 
 /* Decorative layer */
-.deco {
+.page13-shell .deco {
   position: fixed;
   pointer-events: none;
   z-index: 0;
 }
 
-.star-glyph {
+.page13-shell .star-glyph {
   font-size: 1.55rem;
   color: var(--green);
   display: block;
   line-height: 1;
 }
 
-.star-glyph.sm {
+.page13-shell .star-glyph.sm {
   font-size: 1rem;
 }
 
 /* Star positions */
-.d-star-tr   { top: 54px;  right: 72px; }
-.d-star-tr2  { top: 80px;  right: 56px; }
-.d-star-ml   { top: 48%;   left: 32px; }
-.d-star-mid  { top: 385px; left: calc(50% - 230px); }
+.page13-shell .d-star-tr   { top: 54px;  right: 72px; }
+.page13-shell .d-star-tr2  { top: 80px;  right: 56px; }
+.page13-shell .d-star-ml   { top: 48%;   left: 32px; }
+.page13-shell .d-star-mid  { top: 385px; left: calc(50% - 230px); }
 
 /* Swirls & Leaves */
-.d-swirl-tl  { top: 18px;   left: 52px; }
-.d-swirl-br  { bottom: 55px; right: 52px; }
-.d-leaf-ml   { top: 258px;  left: 36px; }
-.d-leaf-mr   { top: 272px;  right: 44px; }
+.page13-shell .d-swirl-tl  { top: 18px;   left: 52px; }
+.page13-shell .d-swirl-br  { bottom: 55px; right: 52px; }
+.page13-shell .d-leaf-ml   { top: 258px;  left: 36px; }
+.page13-shell .d-leaf-mr   { top: 272px;  right: 44px; }
 
 /* Page */
-.page {
+.page13-shell .page {
   position: relative;
   z-index: 1;
   max-width: 960px;
@@ -76,7 +76,7 @@
   padding: 32px 0 14px;
 }
 
-.site-title {
+.page13-shell .site-title {
   font-family: 'Caveat', cursive;
   font-size: clamp(2.2rem, 5vw, 3.4rem);
   font-weight: 700;
@@ -85,7 +85,7 @@
   text-align: center;
 }
 
-.logout-btn {
+.page13-shell .logout-btn {
   position: absolute;
   right: 0;
   top: 50%;
@@ -103,7 +103,7 @@
   transition: color 0.2s;
 }
 
-.logout-btn:hover {
+.page13-shell .logout-btn:hover {
   color: var(--green);
 }
 
@@ -116,7 +116,7 @@
 }
 
 /* Headings */
-.new-post-heading {
+.page13-shell .new-post-heading {
   font-family: 'Kalam', cursive;
   font-size: clamp(1.7rem, 3.2vw, 2.4rem);
   font-weight: 400;
@@ -125,7 +125,7 @@
   letter-spacing: 1px;
 }
 
-.recent-heading {
+.page13-shell .recent-heading {
   font-family: 'Kalam', cursive;
   font-size: clamp(1.5rem, 2.8vw, 2.2rem);
   font-weight: 400;
@@ -135,7 +135,7 @@
 }
 
 /* Labels */
-.field-label {
+.page13-shell .field-label {
   display: block;
   font-size: 0.82rem;
   color: var(--label);
@@ -143,15 +143,15 @@
   font-style: italic;
 }
 
-.link-label-inline,
-.file-label-inline {
+.page13-shell .link-label-inline,
+.page13-shell .file-label-inline {
   font-size: 0.84rem;
   color: var(--label);
   font-style: italic;
 }
 
 /* Description box */
-.description-box {
+.page13-shell .description-box {
   width: 100%;
   min-height: 195px;
   border: 2px solid var(--border);
@@ -164,19 +164,19 @@
   margin-bottom: 10px;
 }
 
-.description-box:focus {
+.page13-shell .description-box:focus {
   border-color: var(--green);
 }
 
 /* Link row */
-.link-row {
+.page13-shell .link-row {
   display: flex;
   align-items: center;
   gap: 12px;
   margin-bottom: 20px;
 }
 
-.link-input {
+.page13-shell .link-input {
   flex: 1;
   border: none;
   border-bottom: 1.8px solid var(--border);
@@ -186,12 +186,12 @@
   outline: none;
 }
 
-.link-input:focus {
+.page13-shell .link-input:focus {
   border-color: var(--green);
 }
 
 /* File row */
-.file-row {
+.page13-shell .file-row {
   display: flex;
   align-items: center;
   gap: 14px;
@@ -202,7 +202,7 @@
   display: none;
 }
 
-.browse-btn {
+.page13-shell .browse-btn {
   font-size: 0.87rem;
   background: var(--white);
   border: 1.8px solid var(--btn-border);
@@ -210,25 +210,25 @@
   cursor: pointer;
 }
 
-.browse-btn:hover {
+.page13-shell .browse-btn:hover {
   background: var(--green);
   color: white;
   border-color: var(--green);
 }
 
-.file-chosen {
+.page13-shell .file-chosen {
   font-size: 0.78rem;
   color: #999;
   font-style: italic;
 }
 
 /* Upload button */
-.upload-btn-wrap {
+.page13-shell .upload-btn-wrap {
   display: flex;
   justify-content: flex-start;
 }
 
-.upload-btn {
+.page13-shell .upload-btn {
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 2.5px;
@@ -238,14 +238,14 @@
   cursor: pointer;
 }
 
-.upload-btn:hover {
+.page13-shell .upload-btn:hover {
   background: var(--green);
   color: white;
   border-color: var(--green);
 }
 
 /* Posts */
-.posts-empty {
+.page13-shell .posts-empty {
   margin-top: 16px;
   font-size: 0.8rem;
   color: #bbb;
@@ -259,11 +259,11 @@
     gap: 32px;
   }
 
-  .recent-heading {
+  .page13-shell .recent-heading {
     margin-top: 0;
   }
 
-  .page {
+  .page13-shell .page {
     padding: 0 18px 48px;
   }
 }

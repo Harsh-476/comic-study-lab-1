@@ -33,6 +33,7 @@ function Page8() {
 
   const projectsPath = isAdmin ? "/page9" : "/page10";
   const comicsPath = isAdmin ? "/page11" : "/page12";
+  const videosPath = isAdmin ? "/page13" : "/page14";
 
   return (
     <div className="page8-container">
@@ -87,8 +88,8 @@ function Page8() {
 
       {/* LOWER-RIGHT: Creatives: Videos */}
       <Link
-        to="/page8/videos"
-        className={`page8-link link-videos${location.pathname === "/page8/videos" ? " active" : ""}`}
+        to={videosPath}
+        className={`page8-link link-videos${location.pathname === videosPath ? " active" : ""}`}
       >
         Creatives: Videos
       </Link>
