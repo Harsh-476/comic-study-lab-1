@@ -1,0 +1,100 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.projects-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+/* TITLE */
+.title {
+  position: absolute;
+  top: 30px;
+  width: 100%;
+  text-align: center;
+  font-family: 'Give You Glory', cursive;
+  font-size: 64px;
+  color: #4f634f;
+}
+
+/* LOGOUT */
+.logout {
+  position: absolute;
+  top: 40px;
+  right: 120px;
+  font-family: Arial, sans-serif; /* fallback */
+  font-size: 18px;
+  color: #4f634f;
+  letter-spacing: 2px;
+}
+
+/* COMMON */
+.img {
+  position: absolute;
+}
+
+/* DOODLES */
+.curl-top-left {
+  top: 20px;
+  left: 60px;
+  width: 80px;
+}
+
+.curl-right {
+  top: 300px;
+  right: 120px;
+  width: 90px;
+}
+
+/* LEAVES */
+.leaf-left {
+  top: 220px;
+  left: 250px;
+  width: 65px;
+  transform: rotate(-80deg);
+}
+
+.leaf-right-top {
+  top: 170px;
+  right: 180px;
+  width: 65px;
+  transform: rotate(80deg);
+}
+
+.leaf-right-mid {
+  top: 300px;
+  right: 300px;
+  width: 60px;
+  transform: rotate(10deg);
+}
+
+/* STARS */
+.star-left {
+  top: 320px;
+  left: 80px;
+  width: 50px;
+}
+
+.star-bottom {
+  bottom: 120px;
+  left: 550px;
+  width: 50px;
+}
+
+.star-top1 {
+  top: 80px;
+  right: 60px;
+  width: 45px;
+}
+
+.star-top2 {
+  top: 120px;
+  right: 40px;
+  width: 45px;
+}
