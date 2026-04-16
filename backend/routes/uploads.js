@@ -10,6 +10,9 @@ import User from "../models/user.js";
 dotenv.config();
 
 const router = express.Router();
+const VALID_SEGMENTS = new Set(["projects", "comics", "videos"]);
+
+const normalizeSegment = (value = "") => String(value).trim().toLowerCase();
 
 const uploadDir = path.resolve("uploads");
 if (!fs.existsSync(uploadDir)) {
@@ -55,7 +58,7 @@ const authenticate = async (req, res, next) => {
     req.userRole = resolvedRole || "user";
 
     return next();
-  } catch (error) {
+  } catch {
     return res.status(401).json({ message: "Invalid or expired token" });
   }
 };
@@ -66,9 +69,17 @@ const countWords = (text = "") =>
     .split(/\s+/)
     .filter(Boolean).length;
 
-router.get("/", async (_req, res) => {
+router.get("/", authenticate, async (req, res) => {
   try {
-    const uploads = await Upload.find().sort({ createdAt: -1 });
+    const segment = normalizeSegment(req.query.segment);
+    if (!segment) {
+      return res.status(400).json({ message: "Segment query is required" });
+    }
+    if (!VALID_SEGMENTS.has(segment)) {
+      return res.status(400).json({ message: "Invalid segment supplied" });
+    }
+
+    const uploads = await Upload.find({ segment }).sort({ createdAt: -1 });
     res.json(uploads);
   } catch (error) {
     console.error("Fetch uploads error", error.message);
@@ -80,6 +91,11 @@ router.post("/", authenticate, upload.single("file"), async (req, res) => {
   try {
     if (req.userRole !== "admin") {
       return res.status(403).json({ message: "Admin access required" });
+    }
+
+    const segment = normalizeSegment(req.body.segment);
+    if (!VALID_SEGMENTS.has(segment)) {
+      return res.status(400).json({ message: "A valid segment is required" });
     }
 
     const description = req.body.description?.trim() || "";
@@ -111,6 +127,7 @@ router.post("/", authenticate, upload.single("file"), async (req, res) => {
 
     const uploadPayload = {
       uploadedBy: req.userId,
+      segment,
     };
 
     if (hasDescription) {

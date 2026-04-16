@@ -10,6 +10,8 @@ import leaf   from "./assets/leaf.png";
 import star   from "./assets/star.png";
 
 const SEGMENT = "projects";
+const isMatchingSegment = (upload) =>
+  String(upload?.segment || "").trim().toLowerCase() === SEGMENT;
 
 const buildFileUrl = (baseUrl, relativeUrl) => {
   if (!baseUrl) {
@@ -56,7 +58,12 @@ const Projects = () => {
         }
         const data = await res.json();
         if (!res.ok) throw new Error(data.message || "Could not load posts");
-        if (!cancelled) setUploads(data);
+        if (!cancelled) {
+          const segmentUploads = Array.isArray(data)
+            ? data.filter(isMatchingSegment)
+            : [];
+          setUploads(segmentUploads);
+        }
       } catch (err) {
         if (!cancelled) setError(err.message);
       } finally {

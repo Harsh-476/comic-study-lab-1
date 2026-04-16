@@ -1,8 +1,20 @@
 {
   "name": "comics-studies-lab",
-  "private": true,
   "version": "0.0.0",
+  "private": true,
+  "description": "Interactive web experience and content hub for the Comics Studies Lab at IIT Jodhpur. The project is split into a React + Vite frontend and a Node.js + Express + MongoDB backend that powers authentication and media uploads.",
+  "homepage": "https://github.com/Harsh-476/comic-study-lab-1#readme",
+  "bugs": {
+    "url": "https://github.com/Harsh-476/comic-study-lab-1/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Harsh-476/comic-study-lab-1.git"
+  },
+  "license": "ISC",
+  "author": "",
   "type": "module",
+  "main": "eslint.config.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

@@ -2,6 +2,12 @@ import mongoose from "mongoose";
 
 const uploadSchema = new mongoose.Schema(
   {
+    segment: {
+      type: String,
+      enum: ["projects", "comics", "videos"],
+      required: true,
+      index: true,
+    },
     description: {
       type: String,
       trim: true,

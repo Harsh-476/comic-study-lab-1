@@ -9,6 +9,8 @@ const MAX_WORDS = 1000;
 const SEGMENT = "comics";
 const countWords = (text = "") =>
   text.trim().split(/\s+/).filter(Boolean).length;
+const isMatchingSegment = (upload) =>
+  String(upload?.segment || "").trim().toLowerCase() === SEGMENT;
 
 const buildFileUrl = (baseUrl, relativeUrl) => {
   if (!baseUrl) {
@@ -80,7 +82,12 @@ export default function CreativesComics() {
         }
         const data = await res.json();
         if (!res.ok) throw new Error(data.message || "Could not load posts");
-        if (!cancelled) setUploads(data);
+        if (!cancelled) {
+          const segmentUploads = Array.isArray(data)
+            ? data.filter(isMatchingSegment)
+            : [];
+          setUploads(segmentUploads);
+        }
       } catch (err) {
         if (!cancelled) setStatus({ type: "error", message: err.message });
       } finally {
@@ -150,7 +157,7 @@ export default function CreativesComics() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "Upload failed.");
 
-      setUploads((prev) => [data, ...prev]);
+      setUploads((prev) => [data, ...prev].filter(isMatchingSegment));
       setDescription("");
       setLink("");
       setFile(null);
