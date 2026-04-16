@@ -66,7 +66,7 @@ const countWords = (text = "") =>
     .split(/\s+/)
     .filter(Boolean).length;
 
-router.get("/", authenticate, async (_req, res) => {
+router.get("/", async (_req, res) => {
   try {
     const uploads = await Upload.find().sort({ createdAt: -1 });
     res.json(uploads);

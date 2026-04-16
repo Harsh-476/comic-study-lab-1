@@ -31,9 +31,9 @@ function Page8() {
     }
   }
 
-  const projectsPath = isAdmin ? "/page9" : "/page10";
-  const comicsPath = isAdmin ? "/page11" : "/page12";
-  const videosPath = isAdmin ? "/page13" : "/page14";
+  const projectsPath = "/page9";
+  const comicsPath = "/page11";
+  const videosPath = "/page13";
 
   return (
     <div className="page8-container">
